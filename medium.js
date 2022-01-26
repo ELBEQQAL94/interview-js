@@ -10,60 +10,7 @@
 // "aA11" -> 2 # 'a' and '1'
 // "ABBA" -> 2 # 'A' and 'B' each occur twice
 
-function duplicateCount(text) {
-    return (text.toLowerCase().split('').sort().join('').match(/([^])\1+/g) || []).length;
-};
 
-function duplicateCount(text) {
-    return text.toLowerCase().split('').filter(function (val, i, arr) {
-        return arr.indexOf(val) !== i && arr.lastIndexOf(val) === i;
-    }).length;
-};
-
-function duplicateCount(text) {
-    var lower = text.toLowerCase();
-    var count = 0;
-    var used = [];
-
-    lower.split('').forEach(function (letter) {
-        if (!used.includes(letter) && (lower.split(letter).length - 1) > 1) {
-            count++;
-            used.push(letter);
-        }
-    });
-
-    return count;
-};
-
-function duplicateCount(text) {
-
-    var input = text.toLowerCase().split('');
-
-    var obj = {};
-
-    for (var i in input) {
-
-        if (!obj[input[i]]) {
-
-            obj[input[i]] = 1;
-
-        } else {
-            obj[input[i]] += 1;
-        }
-    }
-
-    var result = 0;
-
-    for (var prop in obj) {
-
-        if (obj[prop] > 1) {
-            result++;
-        }
-    }
-
-    return result;
-
-};
 
 console.log(duplicateCount(""));
 // 0
